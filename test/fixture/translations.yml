@@ -1,0 +1,23 @@
+# english translations
+en:
+  app:
+    name: "MyApp"
+
+  active_record:
+    attributes:
+      user: "User"
+      name: "Name"
+
+  secret: "shhhh"
+
+# french translations...roughly
+fr:
+  app:
+    name: "MonApp"
+
+  active_record:
+    attributes:
+      user: "Utilisateur"
+      name: "Nom"
+
+  secret: "shhhh"
