@@ -3,8 +3,6 @@ require "active_support"
 
 module I18nExport
 
-  require "i18n_export/railtie" if defined?(Rails) and Rails.version >= "3.0"
-
   def self.config_file=(file)
     @@config_file = file
   end
@@ -34,11 +32,33 @@ private
   def self.generate_output(filters)
     result = {}
 
+    I18n.available_locales.each do |locale|
+      if filters.nil? or filters.empty?
+        result[locale] = I18n.t('.', :locale => locale)
+      else
+        result[locale] ||= {}
+
+        filters.each do |filter|
+          insert_data(I18n.t(filter, :locale => locale), filter.split("."), result[locale])
+        end
+      end
+    end
+
     result
   end
 
-  def self.lookup(key)
-    I18n.translate(key, :raise => true)
+  def self.insert_data(data, path, result)
+    component = path.shift
+
+    if path.empty?
+      result[component] = data
+    else
+      result[component] ||= {}
+      insert_data(data, path, result[component])
+    end
   end
 
 end
+
+
+require File.expand_path("i18n_export/railtie", File.dirname(__FILE__)) if defined?(Rails) and Rails.version >= "3.0.0"

@@ -1,2 +1,2 @@
 var I18n = I18n || {};
-I18n.translations = {"en":{"app":{"name":"MyApp"},"active_record":{"attributes":{"user":"User","name":"Name"}}},"fr":{"app":{"name":"MonApp"},"active_record":{"attributes":{"user":"User","name":"Name"}}}};
+I18n.translations = {"fr":{"app":{"name":"MonApp"},"active_record":{"attributes":{"name":"Nom","user":"Utilisateur"}}},"en":{"app":{"name":"MyApp"},"active_record":{"attributes":{"name":"Name","user":"User"}}}};

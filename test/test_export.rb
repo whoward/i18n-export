@@ -6,6 +6,8 @@ class TestExport < Test::Unit::TestCase
   def setup
     super
 
+    I18n.available_locales = nil
+
     translations = YAML::load_file(fixture_filename("translations.yml"))
 
     translations.each do |locale, translations|
@@ -30,12 +32,18 @@ class TestExport < Test::Unit::TestCase
     assert_equal true, File.file?(tempfile("app.js"))
   end
 
-  # def test_full_export
-  #   I18nExport.export!
+  def test_full_export
+    I18nExport.export!
 
-  #   assert_equal fixture("all.js"), File.read(tempfile "all.js")
-  # end
+    assert_equal fixture("all.js"), File.read(tempfile "all.js")
+  end
 
+  def test_partial_export
+    I18nExport.export!
+
+    assert_equal fixture("app.js"), File.read(tempfile "app.js")
+    assert_equal fixture("client.js"), File.read(tempfile "client.js")
+  end
 
 
 end

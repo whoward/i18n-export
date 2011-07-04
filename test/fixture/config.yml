@@ -7,6 +7,6 @@ translations:
   - file: "test/tmp/client.js"
     only:
       - app
-      - activerecord.attributes
+      - active_record.attributes
 
   - file: "test/tmp/all.js"

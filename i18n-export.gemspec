@@ -11,13 +11,13 @@ Gem::Specification.new do |s|
   s.summary     = "Export I18n translations in multiple formats"
   s.description = "Provides exporting functionality for subtrees of I18n translations.  Includes Railtie for Rails 3 integration."
 
-  s.files         = Dir.glob("lib/**/*.rb")
+  s.files         = Dir.glob("lib/**/*.rb") + Dir.glob("lib/**/*.rake")
   s.test_files    = Dir.glob("test/**/*.rb")
   s.require_paths = ["lib"]
   s.homepage = %q{http://github.com/whoward/i18n-export}
 
   s.add_dependency "i18n"
-  s.add_dependency "active_support", "~> 3.0.0"
+  s.add_dependency "activesupport", "~> 3.0.3"
   s.add_development_dependency "rake"
   s.add_development_dependency "test-unit"
 end
