@@ -1,5 +1,3 @@
-puts "rake task loading!!!!"
-
 namespace :i18n do
   desc "exports all i18n translations according to configuration"
   task :export do

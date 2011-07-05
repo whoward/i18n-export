@@ -10,10 +10,5 @@ module I18nExport
     config.to_prepare do
       I18nExport.export!
     end
-
-    # Used for production
-    config.after_initialize do
-      I18nExport.export!
-    end
   end
 end
