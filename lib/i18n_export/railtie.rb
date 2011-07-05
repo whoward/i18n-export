@@ -8,7 +8,11 @@ module I18nExport
 
     # Used for development
     config.to_prepare do
-      I18nExport.export!
+      is_running_rake = (File.basename($0) == "rake" && !ARGV.grep(/db:/).empty?)
+      
+      unless is_running_rake
+        I18nExport.export!
+      end    
     end
   end
 end
