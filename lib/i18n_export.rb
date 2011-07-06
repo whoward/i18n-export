@@ -21,6 +21,8 @@ module I18nExport
 
 private
   def self.export_file(definition)
+    FileUtils.mkdir_p File.dirname(definition.filename)
+
     open(definition.filename, "w+") do |f|
       f.print "var I18n = I18n || {};\n"
       f.print "I18n.translations = "
