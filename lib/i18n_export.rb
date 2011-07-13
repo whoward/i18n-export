@@ -1,5 +1,6 @@
 require File.expand_path("i18n_export/config", File.dirname(__FILE__))
 require "active_support"
+require "fileutils"
 
 module I18nExport
 
