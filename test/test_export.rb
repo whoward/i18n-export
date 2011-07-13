@@ -32,6 +32,14 @@ class TestExport < Test::Unit::TestCase
     assert_equal true, File.file?(tempfile("app.js"))
   end
 
+  def test_nested_directory
+    I18nExport.config_file = fixture_filename("config-with-nested-directory.yml")
+
+    assert_nothing_thrown do
+      I18nExport.export!
+    end
+  end
+
   def test_full_export
     I18nExport.export!
 

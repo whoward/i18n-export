@@ -1,5 +1,6 @@
 require "rubygems"
 require "test/unit"
+require "fileutils"
 
 require File.expand_path("../lib/i18n_export.rb", File.dirname(__FILE__))
 
@@ -8,13 +9,18 @@ class Test::Unit::TestCase
   def setup
     # assign the configuration file
     I18nExport.config_file = fixture_filename("config.yml")
+
+    # create the temporary directory
+    temporary_directory = File.dirname(tempfile "foo")
+
+    FileUtils.mkdir(temporary_directory)
   end
 
   def teardown
     # remove temp files from the test/tmp directory
-    Dir.glob(tempfile("*")).each do |filename|
-      File.delete(filename)
-    end
+    temporary_directory = File.dirname(tempfile "foo")
+
+    FileUtils.rm_r(temporary_directory)
   end
 
 protected
